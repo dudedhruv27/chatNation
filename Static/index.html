@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatNation</title>
+</head>
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<style type="text/css">
+.in {
+    margin-bottom: 8px !important;
+}
+</style>
+<!--  *********************** User Login Template *************************** -->
+<template id="welcome_template">
+    <div class="container">
+        <div class="row">
+            <header style="margin: 0 auto; width: 100%; height: 40px; background-color: #fefefe; border-bottom: 1px solid grey;">
+                <h4 style="font-family: sans-serif; text-align: center; padding: 5px; font-weight: 400;">Welcome To <span style="color:#007bff; font-size: 26px; font-weight: bold;">ChatNation</span></h4>
+            </header>
+        </div>
+        <div class="row">
+            <div class="col-md col-lg">
+                <div class="card" style="width: 18rem; border: 2px solid grey; padding: 10px; border-radius: 10px; margin: 30px auto;">
+                    <div class="card-body">
+                        <form onsubmit="javascript: signin(event)">
+                            <div class="form-group">
+                                <input type="email" class="form-control in" name="email" placeholder="email" />
+                                <input type="password" class="form-control in" name="password" placeholder="password" />
+                                <button type="submit" class="btn btn-primary btn-block" value="submit">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md col-lg">
+                <div class="card" style="width: 18rem; border: 2px solid grey; padding: 10px; border-radius: 10px; margin: 0 auto;">
+                    <div class="card-body">
+                        <form onsubmit="javascript: signup(event)">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control in" placeholder="name" />
+                                <input type="email" class="form-control in" name="email" placeholder="email" />
+                                <input type="password" class="form-control in" name="password" placeholder="password" />
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<!--  *********************** User Login Template ************************** -->
+<!--  *********************** Home Page Template **************************  -->
+<template id="home_template">
+    <div class="container">
+        <div class="row">
+            <header style="margin: 0 auto; width: 100%; height: 40px; background-color: #fefefe; border-bottom: 1px solid grey; margin-bottom: 20px;">
+                <h4 style="font-family: sans-serif; text-align: center; padding: 5px; font-weight: 400;"><span style="color:#007bff; font-size: 26px; font-weight: bold;">ChatNation</span></h4>
+            </header>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <h4>Joined Groups</h4>
+                <div id="groups"></div>
+            </div>
+            <div class="col-md">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Create Group
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Create New Group</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form onsubmit="javascript: createGroup(event);">
+                                    <input type="text" class="form-control in" name="name" placeholder="name">
+                                    <button name="submit" class="btn btn-primary" type="submit">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <h4>Open Groups</h4>
+                <div id="ogroups"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<!--  *********************** Home Page Template **************************  -->
+<!--  ***********************  Group Page Template ************************* -->
+<template id="group_template">
+    <div class="container">
+        <div class="row">
+            <header style="width: 100%; height: 40px; background-color: #fefefe; border-bottom: 1px solid grey; margin-bottom: 20px;">
+                <h4 style="font-family: sans-serif; text-align: center; padding: 5px; font-weight: 400;"><span style="color:#007bff; font-size: 26px; font-weight: bold;">Group Page</span></h4>
+            </header>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                Groups
+            </div>
+            <div class="col-md">
+                <h3>Profile</h3>
+                <img src="" alt="default.png">
+                <h4>Groups Details</h4>
+            </div>
+            <div class="col-md">
+                <div id="messages"></div>
+                <form onsubmit="javascript: createMessage(event);">
+                    <input type="text-area" class="form-control in" name="message" placeholder="message">
+                    <button name="submit" class="btn btn-success" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+<!--  ***********************  Group Page Template ************************* -->
+
+<body>
+    <div id="view"></div> <!-- View Various Templates Here -->
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/lsApp.js"></script>
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+    <script type="text/javascript" src="/assets/js/users.js"></script>
+    <script type="text/javascript" src="/assets/js/groups.js"></script>
+    <script type="text/javascript" src="/assets/js/messages.js"></script>
+</body>
+
+</html>
